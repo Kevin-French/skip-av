@@ -26,6 +26,16 @@ public struct AVPlayerItem {
     #endif
 }
 
+public class AVPlayerLooper: AVPlayer {
+    
+    #if SKIP
+    override func prepare(_ ctx: Context) {
+        super.prepare(ctx)
+        mediaPlayer?.repeatMode = Player.REPEAT_MODE_ALL
+    }
+    #endif
+}
+
 public class AVPlayer {
     // MediaSession
     private var playerItems: [AVPlayerItem] = []
