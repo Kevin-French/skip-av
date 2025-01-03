@@ -13,7 +13,6 @@ import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
 #endif
 
-#if SKIP
 public class AVURLAsset {
     let url: URL
     
@@ -21,7 +20,6 @@ public class AVURLAsset {
         self.url = url
     }
 }
-#endif
 
 public struct AVPlayerItem {
     let url: URL
@@ -30,11 +28,9 @@ public struct AVPlayerItem {
         self.url = url
     }
     
-    #if SKIP
     public init(asset: AVURLAsset) {
         self.url = asset.url
     }
-    #endif
 
     #if SKIP
     var mediaItem: MediaItem {
@@ -90,19 +86,20 @@ public class AVPlayer {
     func prepare(_ ctx: Context) {
         print("PREPARE - CALLED ")
         guard mediaPlayer == nil else {
+            print("PREPARE - mediaPlayer was nil ")
             return
         }
         print("PREPARE - PAST GUARD")
         let mediaPlayer = ExoPlayer.Builder(ctx).build()
         //let mediaSession = MediaSession.Builder(ctx, mediaPlayer).build()
         self.mediaPlayer = mediaPlayer
-//        mediaPlayer?.repeatMode = Player.REPEAT_MODE_ALL
+        mediaPlayer.repeatMode = Player.REPEAT_MODE_ALL
         for item in self.playerItems {
             print("ADDING MEDIA ITEM")
             mediaPlayer.addMediaItem(item.mediaItem)
         }
         mediaPlayer.prepare()
-//        mediaPlayer?.playWhenReady = true
+        mediaPlayer.playWhenReady = true
         print("PREPARE - PAST DONE")
     }
     #endif
