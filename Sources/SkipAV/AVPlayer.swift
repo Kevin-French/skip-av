@@ -59,7 +59,11 @@ public class AVPlayerLooper: AVPlayer {
 
 public class AVPlayer {
     // MediaSession
-    var playerItems: [AVPlayerItem] = []
+    var playerItems: [AVPlayerItem] = [] {
+        didSet {
+            print("playerItems didSet - oldCount = \(oldValue.count), newCount = \(playerItems.count)")
+        }
+    }
     #if SKIP
     var mediaPlayer: Player? = nil
     #endif
