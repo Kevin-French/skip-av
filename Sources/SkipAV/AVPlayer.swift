@@ -55,6 +55,29 @@ public class AVPlayerLooper: AVPlayer {
         super.init(playerItem: templateItem)
         self.playerItems.append(templateItem)
     }
+    
+    #if SKIP
+    override func prepare(_ ctx: Context) {
+        print("AVPLAYERLOOPER - PREPARE - CALLED ")
+        guard mediaPlayer == nil else {
+            print("PREPARE - mediaPlayer was nil ")
+            return
+        }
+        print("AVPLAYERLOOPER - PREPARE - PAST GUARD")
+        let mediaPlayer = ExoPlayer.Builder(ctx).build()
+        //let mediaSession = MediaSession.Builder(ctx, mediaPlayer).build()
+        self.mediaPlayer = mediaPlayer
+        mediaPlayer.repeatMode = Player.REPEAT_MODE_ALL
+        print("AVPLAYERLOOPER - PREPARE - playerItems count = \(self.playerItems.count)")
+        for item in self.playerItems {
+            print("AVPLAYERLOOPER - ADDING MEDIA ITEM")
+            mediaPlayer.addMediaItem(item.mediaItem)
+        }
+        mediaPlayer.prepare()
+        mediaPlayer.playWhenReady = true
+        print("AVPLAYERLOOPER - PREPARE - DONE")
+    }
+#endif
 }
 
 public class AVPlayer {
@@ -92,24 +115,24 @@ public class AVPlayer {
 
     #if SKIP
     func prepare(_ ctx: Context) {
-        print("PREPARE - CALLED ")
+        print("AVPLAYER - PREPARE - CALLED ")
         guard mediaPlayer == nil else {
             print("PREPARE - mediaPlayer was nil ")
             return
         }
-        print("PREPARE - PAST GUARD")
+        print("AVPLAYER - PREPARE - PAST GUARD")
         let mediaPlayer = ExoPlayer.Builder(ctx).build()
         //let mediaSession = MediaSession.Builder(ctx, mediaPlayer).build()
         self.mediaPlayer = mediaPlayer
         mediaPlayer.repeatMode = Player.REPEAT_MODE_ALL
-        print("PREPARE - playerItems count = \(self.playerItems.count)")
+        print("AVPLAYER - PREPARE - playerItems count = \(self.playerItems.count)")
         for item in self.playerItems {
-            print("ADDING MEDIA ITEM")
+            print("AVPLAYER - ADDING MEDIA ITEM")
             mediaPlayer.addMediaItem(item.mediaItem)
         }
         mediaPlayer.prepare()
         mediaPlayer.playWhenReady = true
-        print("PREPARE - DONE")
+        print("AVPLAYER - PREPARE - DONE")
     }
     #endif
 
