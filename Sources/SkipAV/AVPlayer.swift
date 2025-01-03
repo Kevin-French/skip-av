@@ -5,6 +5,7 @@
 // as published by the Free Software Foundation https://fsf.org
 
 import Foundation
+import AVFoundation
 #if SKIP
 import android.content.Context
 import androidx.media3.common.MediaItem
@@ -26,6 +27,8 @@ public struct AVPlayerItem {
     #endif
 }
 
+public class AVQueuePlayer: AVPlayer { }
+
 public class AVPlayerLooper: AVPlayer {
     
     #if SKIP
@@ -34,6 +37,10 @@ public class AVPlayerLooper: AVPlayer {
         mediaPlayer?.repeatMode = Player.REPEAT_MODE_ALL
     }
     #endif
+    
+    public init(player: AVQueuePlayer, templateItem: AVPlayerItem) {
+        super.init(playerItem: templateItem)
+    }
 }
 
 public class AVPlayer {
