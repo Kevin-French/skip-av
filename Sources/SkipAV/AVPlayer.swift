@@ -94,12 +94,12 @@ public class AVPlayer {
         let mediaPlayer = ExoPlayer.Builder(ctx).build()
         //let mediaSession = MediaSession.Builder(ctx, mediaPlayer).build()
         self.mediaPlayer = mediaPlayer
-        mediaPlayer?.repeatMode = Player.REPEAT_MODE_ALL
+//        mediaPlayer?.repeatMode = Player.REPEAT_MODE_ALL
         for item in self.playerItems {
             mediaPlayer.addMediaItem(item.mediaItem)
         }
         mediaPlayer.prepare()
-        mediaPlayer?.playWhenReady = true
+//        mediaPlayer?.playWhenReady = true
     }
     #endif
 
