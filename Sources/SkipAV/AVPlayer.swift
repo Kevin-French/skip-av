@@ -51,6 +51,7 @@ public class AVPlayerLooper: AVPlayer {
     override func prepare(_ ctx: Context) {
         super.prepare(ctx)
         mediaPlayer?.repeatMode = Player.REPEAT_MODE_ALL
+        mediaPlayer?.playWhenReady = true
     }
     #endif
     
