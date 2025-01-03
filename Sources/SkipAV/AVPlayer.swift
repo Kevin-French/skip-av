@@ -13,12 +13,28 @@ import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
 #endif
 
+#if SKIP
+public class AVURLAsset {
+    let url: URL
+    
+    public init(url: URL) {
+        self.url = url
+    }
+}
+#endif
+
 public struct AVPlayerItem {
     let url: URL
 
     public init(url: URL) {
         self.url = url
     }
+    
+    #if SKIP
+    public init(asset: AVURLAsset) {
+        self.url = asset.url
+    }
+    #endif
 
     #if SKIP
     var mediaItem: MediaItem {
