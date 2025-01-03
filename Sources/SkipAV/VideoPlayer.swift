@@ -21,6 +21,7 @@ public struct VideoPlayer: View {
         ComposeContainer(modifier: context.modifier, fillWidth: true, fillHeight: true) { modifier in
             AndroidView(factory: { ctx in
                 let playerView = PlayerView(ctx)
+                print("ComposeContent - player.playerItems.count: \(player.playerItems.count)")
                 player.prepare(ctx)
                 playerView.player = player.mediaPlayer
                 return playerView
