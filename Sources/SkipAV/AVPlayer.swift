@@ -53,12 +53,13 @@ public class AVPlayerLooper: AVPlayer {
     
     public init(player: AVQueuePlayer, templateItem: AVPlayerItem) {
         super.init(playerItem: templateItem)
+        self.playerItems.append(templateItem)
     }
 }
 
 public class AVPlayer {
     // MediaSession
-    private var playerItems: [AVPlayerItem] = []
+    var playerItems: [AVPlayerItem] = []
     #if SKIP
     var mediaPlayer: Player? = nil
     #endif
