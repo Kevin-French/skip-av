@@ -73,6 +73,7 @@ public class AVPlayer {
     #endif
 
     public init(playerItem: AVPlayerItem?) {
+        print("AVPLAYER INIT CALLED")
         if let playerItem = playerItem {
             playerItems.append(playerItem)
         }
