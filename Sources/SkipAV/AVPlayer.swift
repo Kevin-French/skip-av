@@ -94,13 +94,14 @@ public class AVPlayer {
         //let mediaSession = MediaSession.Builder(ctx, mediaPlayer).build()
         self.mediaPlayer = mediaPlayer
         mediaPlayer.repeatMode = Player.REPEAT_MODE_ALL
+        print("PREPARE - playerItems count = \(self.playerItems.count)")
         for item in self.playerItems {
             print("ADDING MEDIA ITEM")
             mediaPlayer.addMediaItem(item.mediaItem)
         }
         mediaPlayer.prepare()
         mediaPlayer.playWhenReady = true
-        print("PREPARE - PAST DONE")
+        print("PREPARE - DONE")
     }
     #endif
 
