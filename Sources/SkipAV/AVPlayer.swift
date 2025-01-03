@@ -88,9 +88,11 @@ public class AVPlayer {
 
     #if SKIP
     func prepare(_ ctx: Context) {
+        print("PREPARE - CALLED")
         guard mediaPlayer == nil else {
             return
         }
+        print("PREPARE - PAST GUARD")
         let mediaPlayer = ExoPlayer.Builder(ctx).build()
         //let mediaSession = MediaSession.Builder(ctx, mediaPlayer).build()
         self.mediaPlayer = mediaPlayer
@@ -101,6 +103,7 @@ public class AVPlayer {
         }
         mediaPlayer.prepare()
 //        mediaPlayer?.playWhenReady = true
+        print("PREPARE - PAST DONE")
     }
     #endif
 
