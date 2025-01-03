@@ -47,13 +47,13 @@ public class AVQueuePlayer: AVPlayer { }
 
 public class AVPlayerLooper: AVPlayer {
     
-    #if SKIP
-    override func prepare(_ ctx: Context) {
-        super.prepare(ctx)
-        mediaPlayer?.repeatMode = Player.REPEAT_MODE_ALL
-        mediaPlayer?.playWhenReady = true
-    }
-    #endif
+//    #if SKIP
+//    override func prepare(_ ctx: Context) {
+//        super.prepare(ctx)
+//        mediaPlayer?.repeatMode = Player.REPEAT_MODE_ALL
+//        mediaPlayer?.playWhenReady = true
+//    }
+//    #endif
     
     public init(player: AVQueuePlayer, templateItem: AVPlayerItem) {
         super.init(playerItem: templateItem)
@@ -94,10 +94,12 @@ public class AVPlayer {
         let mediaPlayer = ExoPlayer.Builder(ctx).build()
         //let mediaSession = MediaSession.Builder(ctx, mediaPlayer).build()
         self.mediaPlayer = mediaPlayer
+        mediaPlayer?.repeatMode = Player.REPEAT_MODE_ALL
         for item in self.playerItems {
             mediaPlayer.addMediaItem(item.mediaItem)
         }
         mediaPlayer.prepare()
+        mediaPlayer?.playWhenReady = true
     }
     #endif
 
