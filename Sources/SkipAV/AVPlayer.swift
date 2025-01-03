@@ -75,7 +75,9 @@ public class AVPlayer {
     public init(playerItem: AVPlayerItem?) {
         print("AVPLAYER INIT CALLED")
         if let playerItem = playerItem {
+            print("AVPLAYER INIT - ADDING PLAYER ITEM")
             playerItems.append(playerItem)
+            print("AVPLAYER INIT - playerItems.count = \(playerItems.count)")
         }
     }
 
