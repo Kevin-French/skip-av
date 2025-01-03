@@ -96,6 +96,7 @@ public class AVPlayer {
         self.mediaPlayer = mediaPlayer
 //        mediaPlayer?.repeatMode = Player.REPEAT_MODE_ALL
         for item in self.playerItems {
+            print("ADDING MEDIA ITEM")
             mediaPlayer.addMediaItem(item.mediaItem)
         }
         mediaPlayer.prepare()
