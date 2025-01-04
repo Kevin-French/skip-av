@@ -15,7 +15,13 @@ public struct VideoPlayer: View {
 
     public init(player: AVPlayer) {
         self.player = player
-        print("VideoPlayer - Init - player.playerItems.count: \(player.playerItems.count)")
+        print("VideoPlayer - AVPlayer Init - player.playerItems.count: \(player.playerItems.count)")
+        print("player is AVPlayerLooper:", player is AVPlayerLooper)
+    }
+    
+    public init(player: AVPlayerLooper) {
+        self.player = player
+        print("VideoPlayer - AVPlayerLooper Init - player.playerItems.count: \(player.playerItems.count)")
         print("player is AVPlayerLooper:", player is AVPlayerLooper)
     }
 
