@@ -15,6 +15,7 @@ public struct VideoPlayer: View {
 
     public init(player: AVPlayer) {
         self.player = player
+        print("VideoPlayer - Init - player.playerItems.count: \(player.playerItems.count)")
     }
 
     @Composable public override func ComposeContent(context: ComposeContext) {
